@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Acceso al simulador de absorción curricular de la Licenciatura en Mercadeo Internacional.">
+  <meta name="description" content="Acceso al simulador de absorción curricular de la Facultad de Ciencias Económicas de la Universidad de El Salvador.">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-L4BZbglLdi35SwYRlgiy0g3N4Ehj2jz0auFzQ6nV7yQ='; img-src 'self'; object-src 'none'; media-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-dDu4vWTqTKgeI7jaxMcYGdvtPnD/Z4bKe9QTbPc6nhY='; img-src 'self'; object-src 'none'; media-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Simulador de absorción curricular</title>
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/png" href="logo-fce.png">
   <style>
     :root {
       color-scheme: light;
@@ -15,6 +15,8 @@
       --navy-900: #0b294f;
       --navy-800: #123d6a;
       --blue-100: #e8f3fb;
+      --blue-200: #cfe3f2;
+      --red: #a51d2d;
       --orange: #ff7625;
       --ink: #182536;
       --muted: #5d6b7a;
@@ -38,8 +40,8 @@
     }
 
     main {
-      width: min(620px, 100%);
-      padding: clamp(30px, 6vw, 52px);
+      width: min(700px, 100%);
+      padding: clamp(28px, 6vw, 52px);
       border: 1px solid rgba(255, 255, 255, .62);
       border-radius: 24px;
       background: var(--surface);
@@ -47,31 +49,35 @@
       text-align: center;
     }
 
-    .logo-link {
-      display: inline-block;
-      width: min(360px, 88%);
-      border-radius: 18px;
-      transition: transform .18s ease, filter .18s ease;
+    .brand-lockup {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(96px, .72fr);
+      gap: clamp(18px, 4vw, 34px);
+      align-items: center;
+      max-width: 570px;
+      margin: 0 auto;
+      padding: 2px 4px 22px;
+      border-bottom: 1px solid var(--blue-200);
     }
 
-    .logo-link:hover { transform: translateY(-3px); }
-
-    .logo-link:focus-visible,
-    .open-button:focus-visible {
-      outline: 4px solid rgba(255, 118, 37, .4);
-      outline-offset: 5px;
-    }
-
-    .logo {
+    .brand-logo {
       display: block;
       width: 100%;
       height: auto;
-      border-radius: 14px;
+      object-fit: contain;
+    }
+
+    .brand-logo--ues {
+      max-height: 112px;
+    }
+
+    .brand-logo--faculty {
+      max-height: 128px;
     }
 
     .eyebrow {
       margin: 24px 0 7px;
-      color: var(--navy-800);
+      color: var(--red);
       font-size: .78rem;
       font-weight: 850;
       letter-spacing: .1em;
@@ -86,11 +92,42 @@
     }
 
     .description {
-      max-width: 470px;
-      margin: 14px auto 24px;
+      max-width: 530px;
+      margin: 14px auto 20px;
       color: var(--muted);
       font-size: 1rem;
       line-height: 1.55;
+    }
+
+    .routes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 570px;
+      margin: 0 auto 24px;
+      text-align: left;
+    }
+
+    .route {
+      min-height: 104px;
+      padding: 15px 16px;
+      border: 1px solid var(--blue-200);
+      border-radius: 14px;
+      background: var(--blue-100);
+    }
+
+    .route strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--navy-900);
+      font-size: .92rem;
+      line-height: 1.3;
+    }
+
+    .route span {
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.4;
     }
 
     .open-button {
@@ -113,6 +150,11 @@
       background: var(--navy-800);
     }
 
+    .open-button:focus-visible {
+      outline: 4px solid rgba(255, 118, 37, .4);
+      outline-offset: 5px;
+    }
+
     .access-note {
       margin: 16px 0 0;
       color: var(--muted);
@@ -129,47 +171,72 @@
       line-height: 1.5;
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 560px) {
       body { padding: 14px; }
-      main { padding: 28px 20px; border-radius: 18px; }
-      .logo-link { width: 96%; }
+      main { padding: 26px 18px; border-radius: 18px; }
+      .brand-lockup {
+        grid-template-columns: minmax(0, 1.8fr) minmax(78px, .72fr);
+        gap: 14px;
+      }
+      .routes { grid-template-columns: 1fr; }
+      .route { min-height: 0; text-align: center; }
       .open-button { width: 100%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .logo-link,
       .open-button { transition: none; }
     }
   </style>
 </head>
 <body>
   <main>
-    <a
-      class="logo-link"
-      href="https://script.google.com/a/macros/ues.edu.sv/s/AKfycbxsUPwvAt4IQgMBrTLDtxJTRMo9NxqcJa0ny0yTA_dMRZVimBtp3pwneJeGuy7zbPYt/exec"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Abrir el simulador de absorción curricular"
-    >
-      <img class="logo" src="logo.png" alt="Logotipo de la Escuela de Mercadeo Internacional">
-    </a>
+    <div class="brand-lockup" aria-label="Identidad institucional">
+      <img
+        class="brand-logo brand-logo--ues"
+        src="logo-ues.png"
+        alt="Universidad de El Salvador"
+        width="500"
+        height="176"
+        referrerpolicy="no-referrer"
+      >
+      <img
+        class="brand-logo brand-logo--faculty"
+        src="logo-fce.png"
+        alt="Facultad de Ciencias Económicas"
+        width="1417"
+        height="1417"
+        referrerpolicy="no-referrer"
+      >
+    </div>
 
-    <p class="eyebrow">Universidad de El Salvador</p>
+    <p class="eyebrow">Facultad de Ciencias Económicas</p>
     <h1>Simulador de absorción curricular</h1>
-    <p class="description">Licenciatura en Mercadeo Internacional · Transición del Plan 2004 al Plan 2027</p>
+    <p class="description">Consulte la absorción de asignaturas hacia los planes de estudio 2027 de las carreras disponibles.</p>
+
+    <div class="routes" aria-label="Planes de absorción disponibles">
+      <div class="route">
+        <strong>Licenciatura en Mercadeo Internacional</strong>
+        <span>Plan 2004 → Plan 2027</span>
+      </div>
+      <div class="route">
+        <strong>Licenciatura en Administración de Empresas</strong>
+        <span>Plan 1994 → Plan 2027</span>
+      </div>
+    </div>
 
     <a
       class="open-button"
       href="https://script.google.com/a/macros/ues.edu.sv/s/AKfycbxsUPwvAt4IQgMBrTLDtxJTRMo9NxqcJa0ny0yTA_dMRZVimBtp3pwneJeGuy7zbPYt/exec"
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="Abrir el simulador de absorción curricular"
     >Abrir simulador</a>
 
     <p class="access-note">Acceso habilitado únicamente para las personas autorizadas durante la etapa de revisión.</p>
 
     <footer>
-      Facultad de Ciencias Económicas<br>
-      Escuela de Mercadeo Internacional
+      Universidad de El Salvador<br>
+      Facultad de Ciencias Económicas
     </footer>
   </main>
 </body>
